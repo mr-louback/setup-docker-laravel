@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Repositories;
+
 use App\DTOs\CreateSupportDTO;
 use App\DTOs\UpdateSupportDTO;
 use App\Models\Support;
