@@ -2,8 +2,7 @@
 
 namespace App\Services;
 
-use App\DTOs\CreateSupportDTO;
-use App\DTOs\UpdateSupportDTO;
+use App\DTOs\Supports\{CreateSupportDTO,UpdateSupportDTO};
 use App\Repositories\SupportRepositoryInterface;
 use stdClass;
 
@@ -11,9 +10,7 @@ class SupportService
 {
     public function __construct(
         protected SupportRepositoryInterface $repository
-    ) {
-    }
-
+    ){}
     public function getAll(string $filter = null): array
     {
         return $this->repository->getAll($filter);
@@ -33,5 +30,13 @@ class SupportService
     public function delete(string $id): void
     {
         $this->repository->delete($id);
+    }
+    public function paginate(int $page = 1, int $totalPerPage = 15, string $filter = null)
+    {
+        return $this->repository->paginate(
+            page: $page,
+            totalPerPage: $totalPerPage,
+            filter: $filter
+        );
     }
 }
