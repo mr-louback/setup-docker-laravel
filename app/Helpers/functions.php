@@ -1,9 +1,9 @@
 <?php
 
-use App\ENUMs\SupportStatus;
+use App\ENUM\SupportStatus;
 
 if (!function_exists('getStatusSupport')) {
-    function getStatusSupport(string $status): string
+    function getStatusSupport(string $status)
     {
         return SupportStatus::fromValue($status);
     }

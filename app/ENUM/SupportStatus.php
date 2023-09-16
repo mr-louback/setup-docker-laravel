@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums;
+namespace App\ENUM;
 
 enum SupportStatus: string
 {
@@ -8,14 +8,13 @@ enum SupportStatus: string
     case C = "Closed";
     case P = "Pendent";
 
-    public static function fromValue(string $name): string
+    public static function fromValue(string $name)
     {
         foreach (self::cases() as $status) {
-            if ($name === $status->name) {
+            if (strtolower($status->name) === $name) {
                 return $status->value;
             }
         }
-
         throw new \ValueError("$status->name is not a valid");
     }
 }
