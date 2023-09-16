@@ -21,16 +21,11 @@ class SupportController extends Controller
             totalPerPage: $request->get('per_page', 4),
             filter: $request->filter,
         );
-        // dd($supports);
         $filters = ['filter' => $request->get('filter', '')];
         return view('admin/supports/index', compact('supports', 'filters'));
     }
     public function show(string $id)
     {
-        // $support = Support::find($id);
-        // $support = Support::where('id',$id)->first();
-        // $support = Support::where('id','=',$id)->first();
-        // $support = Support::where('id','!=',$id)->first();
         if (!$support = $this->service->findOne($id)) {
             return back();
         }
@@ -47,7 +42,6 @@ class SupportController extends Controller
     }
     public function edit(string $id)
     {
-        // if (!$support = $support->where('id', $id)->first())
         if (!$support = $this->service->findOne($id)) {
             return back();
         }
@@ -59,21 +53,10 @@ class SupportController extends Controller
         if (!$support) {
             return back();
         }
-
-        // $support->subject = $request->subject;
-        // $support->body = $request->body;
-        // $support->save();
-        // $support->update($request->validated());
-
         return redirect()->route('supports.index')->with('message', 'Editado com sucesso!');
     }
     public function destroy(string  $id)
     {
-        // if (!$support = Support::find($id)) {
-        //     return back();
-        // }
-        // $support->delete();
-
         $this->service->delete($id);
         return redirect()->route('supports.index');
     }
