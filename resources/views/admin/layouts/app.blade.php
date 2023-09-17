@@ -7,25 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> @yield('title') {{ config('app.name') }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
     <section class="container px-4 mx-auto">
-
         <header>
             @yield('header')
-
-
         </header>
         <div class="content">
-            <x-messages/>
+            <x-messages />
             @yield('content')
         </div>
         <footer>
             @yield('footer')
-
         </footer>
     </section>
- </body>
+</body>
 
 </html>
