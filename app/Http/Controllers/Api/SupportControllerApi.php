@@ -24,7 +24,7 @@ class SupportControllerApi extends Controller
     {
         $supports = $this->service->paginate(
             page: $request->get('page', 1),
-            totalPerPage: $request->get('per_page', 4),
+            totalPerPage: $request->get('per_page', 15),
             filter: $request->filter,
         );
         return ApiAdapter::toJson($supports);
