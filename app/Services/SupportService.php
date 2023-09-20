@@ -3,7 +3,8 @@
 namespace App\Services;
 
 use App\DTOs\Supports\{CreateSupportDTO,UpdateSupportDTO};
-use App\Repositories\SupportRepositoryInterface;
+use App\Repositories\Contracts\PaginationInterface;
+use App\Repositories\Contracts\SupportRepositoryInterface;
 use stdClass;
 
 class SupportService
@@ -31,7 +32,7 @@ class SupportService
     {
         $this->repository->delete($id);
     }
-    public function paginate(int $page = 1, int $totalPerPage = 15, string $filter = null)
+    public function paginate(int $page = 1, int $totalPerPage = 15, string $filter = null): PaginationInterface
     {
         return $this->repository->paginate(
             page: $page,

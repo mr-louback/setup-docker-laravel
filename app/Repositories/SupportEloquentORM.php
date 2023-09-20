@@ -4,7 +4,8 @@ namespace App\Repositories;
 
 use App\DTOs\Supports\{CreateSupportDTO,UpdateSupportDTO};
 use App\Models\Support;
-use App\Repositories\SupportRepositoryInterface;
+use App\Repositories\Contracts\PaginationInterface;
+use App\Repositories\Contracts\SupportRepositoryInterface;
 use App\Repositories\PaginationPresenter;
 
 use stdClass;
@@ -27,8 +28,8 @@ class SupportEloquentORM implements SupportRepositoryInterface
     }
     public function paginate(int $page = 1, int $totalPerPage = 15, string $filter = null): PaginationInterface
     {
-        $result = $this->model->where(function ($query) use ($filter) {
-            if ($filter) {
+        $result = $this->model->where(function ($query) use ($filter)  {
+            if ($filter) {  
                 $query->where('subject', $filter);
                 $query->orWhere('body', 'like', "%{$filter}%");
             }
