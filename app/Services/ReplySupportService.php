@@ -3,17 +3,25 @@
 namespace App\Services;
 
 use App\DTOs\Replies\CreateReplyDTO;
+use App\Repositories\Contracts\ReplyRepositoryInterface;
 use stdClass;
 
 class ReplySupportService
 {
-    public function getAllBySupportId(string $supportid): array
+    public function __construct(protected ReplyRepositoryInterface $repository)
     {
-        return [];
+    }
+    public function getAllBySupportId(string $support_id): array
+    {
+        return $this->repository->getAllBySupportId($support_id);
     }
 
     public function createNew(CreateReplyDTO $dto): stdClass
     {
-        throw new \Exception('not implemented');
+        return $this->repository->createNew($dto);
+    }
+    public function delete(string $id): bool
+    {
+        return $this->repository->delete($id);
     }
 }
