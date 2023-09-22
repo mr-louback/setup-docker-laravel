@@ -27,8 +27,9 @@ class ReplySupportRepository implements ReplyRepositoryInterface
             // 'user_id'=> auth()->id(),
             'user_id' => Auth::user()->id,
         ]);
+        $reply = $reply->with('user')->first();
+        // dd($reply->attributes);
         return (object) $reply->toArray();
-        // throw new \Exception('not implemented');
     }
     public function delete(string $id): bool
     {
