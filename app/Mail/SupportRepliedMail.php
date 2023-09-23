@@ -8,17 +8,17 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use stdClass;
 
-class SupportRepliedMail extends Mailable
+class SupportRepliedMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(protected stdClass $reply)
     {
-        //
     }
 
     /**
@@ -37,7 +37,10 @@ class SupportRepliedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.support.replied',
+            markdown: 'emails.supports.replied',
+            with: [
+                'reply' => $this->reply
+            ]
         );
     }
 

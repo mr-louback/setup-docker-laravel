@@ -23,9 +23,9 @@ class SendMailWhenSupportReplied
      */
     public function handle(SupportReplied $event): void
     {
-        $support = $event->supportEvent();
-        Mail::to($support->user['email'])->send(
-            new SupportRepliedMail()
+        $reply = $event->eventReply();
+        Mail::to($reply->user['email'])->send(
+            new SupportRepliedMail($reply)
         );
     }
 }

@@ -1,1 +1,0 @@
-Sua dúvida foi respondida!

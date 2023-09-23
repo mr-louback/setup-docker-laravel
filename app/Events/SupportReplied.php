@@ -18,13 +18,13 @@ class SupportReplied
     /**
      * Create a new event instance.
      */
-    public function __construct(protected stdClass $eventSupport)
+    public function __construct(protected stdClass $eventReply)
     {
         //
     }
-    public function supportEvent(): stdClass
+    public function eventReply(): stdClass
     {
-        return $this->eventSupport;
+        return $this->eventReply;
     }
 
     /**
