@@ -18,22 +18,27 @@ class SupportEloquentORM implements SupportRepositoryInterface
     }
     public function getAll(string $filter = null): array
     {
-
         return $this->model->where(function ($query) use ($filter) {
             if ($filter) {
                 $query->where('subject', $filter);
                 $query->orWhere('body', 'like', "%{$filter}%");
             }
-        })->get()->toArray();
+        })->get()->toArray(); 
     }
     public function paginate(int $page = 1, int $totalPerPage = 15, string $filter = null): PaginationInterface
     {
-        $result = $this->model->where(function ($query) use ($filter) {
-            if ($filter) {
-                $query->where('subject', $filter);
-                $query->orWhere('body', 'like', "%{$filter}%");
-            }
-        })->paginate($totalPerPage, ['*'], 'page', $page);
+        $result = $this->model
+            ->with(['replies' => function ($query) {
+                $query->limit(4);
+                $query->latest();
+            }])
+            ->where(function ($query) use ($filter) {
+                if ($filter) {
+                    $query->where('subject', $filter);
+                    $query->orWhere('body', 'like', "%{$filter}%");
+                }
+            })->paginate($totalPerPage, ['*'], 'page', $page);
+        dd(new PaginationPresenter($result));
         return new PaginationPresenter($result);
     }
 

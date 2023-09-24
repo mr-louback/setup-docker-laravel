@@ -20,6 +20,6 @@ class Support extends Model
     }
     public function replies(): HasMany
     {
-        return $this->hasMany(Support::class);
+        return $this->hasMany(ReplySupport::class);
     }
 }
