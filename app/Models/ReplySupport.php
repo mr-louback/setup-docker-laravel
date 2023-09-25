@@ -13,9 +13,7 @@ class ReplySupport extends Model
 {
     use HasFactory, HasUuids;
     protected $table = 'replies_supports';
-    protected $fillable = [
-        'user_id', 'support_id', 'content'
-    ];
+    protected $fillable = ['user_id', 'support_id', 'content'];
     protected $with = ['user'];
     public function createdAt(): Attribute
     {
