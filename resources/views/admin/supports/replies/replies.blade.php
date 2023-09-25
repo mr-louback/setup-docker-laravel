@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- component -->
-    <div class="flex justify-center min-h-screen">
+    <div class="flex justify-center min-h-screen ">
         <div class="md:w-3/5 w-3/4 px-10 flex flex-col gap-2 p-5">
             <div class="flex justify-between">
                 <h1 class="text-lg">Detalhes da Dúvida <b>{{ $support->subject }}</b></h1>
@@ -26,7 +26,7 @@
             <div class="flex flex-col gap-3 text-white">
 
                 @forelse ($replies as $reply)
-                    <div class="flex flex-col gap-4 rounded p-4">
+                    <div class="flex flex-col bg-gray-500 gap-4 rounded p-4">
                         <!-- Profile and Rating -->
                         <div class="flex justify justify-between">
                             <div class="flex gap-2">
