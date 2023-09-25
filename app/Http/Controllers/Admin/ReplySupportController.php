@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreReplySupportRequest;
 use App\Services\ReplySupportService;
 use App\Services\SupportService;
-use Illuminate\Http\Request;
 
 class ReplySupportController extends Controller
 {
@@ -22,19 +21,15 @@ class ReplySupportController extends Controller
         }
         $replies = $this->serviceReply->getAllBySupportId($id);
         return view('admin.supports.replies.replies', compact('support', 'replies'));
-    } 
+    }
     public function store(StoreReplySupportRequest $request)
     {
-        if (!$request = $this->serviceReply->createNew(CreateReplyDTO::makeFromRequest($request))) {
-            return back();
-        }
+        $request = $this->serviceReply->createNew(CreateReplyDTO::makeFromRequest($request));
         return redirect()->route('replies.index', $request->support_id)->with('message', 'Cadastrado com sucesso!');
-
     }
     public function destroy(string $supportId, string $id)
     {
         $this->serviceReply->delete($id);
         return redirect()->route('replies.index', $supportId)->with('message', 'Deletado com sucesso!');
-
     }
 }

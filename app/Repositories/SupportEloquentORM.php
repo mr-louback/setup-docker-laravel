@@ -38,7 +38,7 @@ class SupportEloquentORM implements SupportRepositoryInterface
                     $query->orWhere('body', 'like', "%{$filter}%");
                 }
             })->paginate($totalPerPage, ['*'], 'page', $page);
-        dd(new PaginationPresenter($result));
+        // dd(new PaginationPresenter($result));
         return new PaginationPresenter($result);
     }
 
