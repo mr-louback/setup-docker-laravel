@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-use App\DTOs\Supports\{CreateSupportDTO,UpdateSupportDTO};
+use App\DTOs\Supports\{CreateSupportDTO, UpdateSupportDTO};
+use App\ENUM\SupportStatus;
 use App\Repositories\Contracts\PaginationInterface;
 use App\Repositories\Contracts\SupportRepositoryInterface;
 use stdClass;
@@ -11,7 +12,8 @@ class SupportService
 {
     public function __construct(
         protected SupportRepositoryInterface $repository
-    ){}
+    ) {
+    }
     public function getAll(string $filter = null): array
     {
         return $this->repository->getAll($filter);
@@ -39,5 +41,9 @@ class SupportService
             totalPerPage: $totalPerPage,
             filter: $filter
         );
+    }
+    public function updateStatus(string $id, SupportStatus $status)
+    {
+        $this->repository->updateStatus($id, $status);
     }
 }

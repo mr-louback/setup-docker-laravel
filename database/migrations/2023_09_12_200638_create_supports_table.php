@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('user_id')->index();
             $table->string('subject');
-            $table->enum('status', ['a','c','p']);
+            $table->enum('status', ['a', 'c', 'p']);
             $table->text('body');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

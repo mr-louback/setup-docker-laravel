@@ -2,6 +2,7 @@
 
 namespace App\DTOs\Supports;
 
+use App\ENUM\SupportStatus;
 use App\Http\Requests\StoreUpdateSupport;
 
 class CreateSupportDTO
