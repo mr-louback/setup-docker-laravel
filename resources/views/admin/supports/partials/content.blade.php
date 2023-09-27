@@ -22,10 +22,11 @@
 
                             <th scope="col"
                                 class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                Interações</th>
+                                Interações
+                            </th>
 
-                            <th scope="col" class="relative py-3.5 px-4">
-                                <span class="sr-only">Ver</span>
+                            <th scope="col" class="relative py-3.5 px-4 text-gray-300">
+                                <span class="sr-only ">Ver</span>
                             </th>
                         </tr>
                     </thead>
@@ -43,17 +44,15 @@
                                 </td>
                                 <td class="px-4 py-2 text-sm whitespace-nowrap">
                                     <div class="flex items-center">
-                                        {{-- @if ($support->replies) --}}
-                                            @foreach ($support->replies as $reply)
-                                                @if ($loop->index < 4)
-                                                    <div
-                                                        class="object-cover w-6 h-6 -mx-1 border-2 border-white rounded-full shrink-0 bg-green-500">
-                                                        {{ getInitials($reply['user']['name']) }}</div>
-                                                @endif
-                                            @endforeach
-                                        {{-- @else --}}
-                                            {{-- <div>Sem respostas</div> --}}
-                                        {{-- @endif --}}
+                                        @foreach ($support->replies as $reply)
+                                            {{-- @if ($reply->index < 4) --}}
+                                                <div
+                                                    class="object-cover w-6 h-6 -mx-1 border-2 border-white rounded-full shrink-0 bg-green-500">
+                                                    {{ getInitials($reply['user']['name']) }}
+                                                </div>
+                                            {{-- @endif --}}
+                                            {{-- <p class="rounded-full">{{count($support->replies)}}</p> --}}
+                                        @endforeach
                                     </div>
                                 </td>
                                 <td class="px-4 py-2 text-sm whitespace-nowrap flex">

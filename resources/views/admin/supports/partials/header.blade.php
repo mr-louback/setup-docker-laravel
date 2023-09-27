@@ -19,6 +19,7 @@
             </a>
         </div>
     </div>
+
     <div class="relative flex items-center mt-4 md:mt-0">
         <span class="absolute bottom-6">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -33,4 +34,9 @@
                 value="{{ $filters['filter'] ?? '' }}">
         </form>
     </div>
+    <form action="{{ route('dashboard') }}">
+        <button
+            class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none mt-4"
+            type="submit">Dashboard</button>
+    </form>
 </div>

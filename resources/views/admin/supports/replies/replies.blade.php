@@ -69,6 +69,10 @@
                             class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none">
                             Enviar
                         </button>
+
+                        <a href="{{ route('supports.index') }}"
+                            class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none mt-4"
+                            type="submit">Voltar</a>
                     </form>
                 </div>
             </div>
